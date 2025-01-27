@@ -19,10 +19,11 @@ cursor = connection.cursor()
 # initialize table if does not exist with username as primary key
 cursor.execute("CREATE TABLE IF NOT EXISTS account (username TEXT PRIMARY KEY, password TEXT, firstName TEXT, lastName TEXT, balance INTEGER)")
 
-# def admin function - ALI
+# admin function
+# select all data from account table
+# and print all data in a table format
 def admin():
-    cursor.execute("SELECT * FROM account")
-    return cursor.fetchall()
+    pass
 
 # login, register, logout function - ALI
 def login(): 
@@ -42,6 +43,10 @@ def view_name():
 def edit_name():
     pass
 
+# edit username - NAHIN
+def edit_username():
+    pass
+
 # check balance - LEE
 def check_balance(username):
     pass
@@ -50,20 +55,27 @@ def check_balance(username):
 def reload_balance(username, amount):
     pass
 
+# fare calculator - ALI
+def fare_calculator():
+    pass
+
 # main function
 def main():
-    cmd = input("Enter command: ")
-    if cmd == "register":
-        register()
-    elif cmd == "login":
-        login()
-    elif cmd == "logout":
-        logout()
+    while True:
+        cmd = input("Enter command: ")
+        
+        if cmd == "register":
+            register()
+        elif cmd == "login":
+            login()
+        elif cmd == "logout":
+            logout()
+        elif cmd == "admin":
+            admin()
 
 # call main function
 if __name__ == '__main__':
-    while True:
-        main()
+    main()
 
 # close connection
 connection.close()
