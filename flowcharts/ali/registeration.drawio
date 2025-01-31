@@ -1,0 +1,96 @@
+<mxfile host="Electron" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/26.0.9 Chrome/128.0.6613.186 Electron/32.2.5 Safari/537.36" version="26.0.9">
+  <diagram name="Page-1" id="3ATwYw74pGxiHzzZYlOl">
+    <mxGraphModel dx="1434" dy="836" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="950" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="cP1S4liCDLyM7yqmD5WY-3" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="cP1S4liCDLyM7yqmD5WY-1" target="cP1S4liCDLyM7yqmD5WY-2" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="cP1S4liCDLyM7yqmD5WY-1" value="register (username, password, name)" style="ellipse;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="365" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="cP1S4liCDLyM7yqmD5WY-5" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="cP1S4liCDLyM7yqmD5WY-2" target="cP1S4liCDLyM7yqmD5WY-4" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="cP1S4liCDLyM7yqmD5WY-2" value="query = EXECUTE &quot;SELECT username FROM account WHERE username = ?&quot; WITH (username)" style="whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="365" y="120" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="cP1S4liCDLyM7yqmD5WY-7" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="cP1S4liCDLyM7yqmD5WY-4" target="cP1S4liCDLyM7yqmD5WY-6" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="cP1S4liCDLyM7yqmD5WY-4" value="row = query" style="whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="365" y="240" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="cP1S4liCDLyM7yqmD5WY-9" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="cP1S4liCDLyM7yqmD5WY-6" target="cP1S4liCDLyM7yqmD5WY-8" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="cP1S4liCDLyM7yqmD5WY-12" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;" parent="1" source="cP1S4liCDLyM7yqmD5WY-6" target="cP1S4liCDLyM7yqmD5WY-11" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="cP1S4liCDLyM7yqmD5WY-6" value="if row" style="rhombus;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="385" y="330" width="80" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="cP1S4liCDLyM7yqmD5WY-21" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="cP1S4liCDLyM7yqmD5WY-8" target="cP1S4liCDLyM7yqmD5WY-20" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="cP1S4liCDLyM7yqmD5WY-8" value="print &quot;Username is taken&quot;" style="whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="500" y="420" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="cP1S4liCDLyM7yqmD5WY-10" value="True" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="465" y="340" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="cP1S4liCDLyM7yqmD5WY-15" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="cP1S4liCDLyM7yqmD5WY-11" target="cP1S4liCDLyM7yqmD5WY-14" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="cP1S4liCDLyM7yqmD5WY-11" value="password = SHA256(password) -&amp;gt; Hex" style="whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="130" y="420" width="220" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="cP1S4liCDLyM7yqmD5WY-17" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="cP1S4liCDLyM7yqmD5WY-14" target="cP1S4liCDLyM7yqmD5WY-16" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="cP1S4liCDLyM7yqmD5WY-14" value="&lt;span class=&quot;hljs-keyword&quot;&gt;Execute&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;SQL&lt;/span&gt;: &lt;span class=&quot;hljs-keyword&quot;&gt;INSERT&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;INTO&lt;/span&gt; account (username, password, name, balance) &lt;span class=&quot;hljs-keyword&quot;&gt;VALUES&lt;/span&gt; (?, ?, ?, &lt;span class=&quot;hljs-number&quot;&gt;0&lt;/span&gt;) WITH (username, password, name)" style="whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="130" y="510" width="220" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="cP1S4liCDLyM7yqmD5WY-19" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="cP1S4liCDLyM7yqmD5WY-16" target="cP1S4liCDLyM7yqmD5WY-18" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="cP1S4liCDLyM7yqmD5WY-16" value="commit changes" style="whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="130" y="600" width="220" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="cP1S4liCDLyM7yqmD5WY-28" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" parent="1" source="cP1S4liCDLyM7yqmD5WY-18" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="410" y="810" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="240" y="810" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="cP1S4liCDLyM7yqmD5WY-18" value="return True" style="whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="130" y="690" width="220" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="cP1S4liCDLyM7yqmD5WY-27" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" parent="1" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="560" y="530" as="sourcePoint" />
+            <mxPoint x="430" y="810" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="560" y="810" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="cP1S4liCDLyM7yqmD5WY-20" value="return False" style="whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="500" y="510" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="cP1S4liCDLyM7yqmD5WY-26" value="EXIT" style="ellipse;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="360" y="870" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="cP1S4liCDLyM7yqmD5WY-30" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="cP1S4liCDLyM7yqmD5WY-29" target="cP1S4liCDLyM7yqmD5WY-26" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="cP1S4liCDLyM7yqmD5WY-29" value="" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;" parent="1" vertex="1">
+          <mxGeometry x="410" y="800" width="20" height="20" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
