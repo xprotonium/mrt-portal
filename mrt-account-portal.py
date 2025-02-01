@@ -79,15 +79,25 @@ def logout():
 
 # view name - NAHIN
 def view_name(username):
-    pass
+    cursor.execute("SELECT name FROM account WHERE username = ?", (username,))
+    result = cursor.fetchone()
+
+    name = result[0]
+    return name
+
 
 # edit name - NAHIN
-def edit_name():
-    pass
+def edit_name(username, new_name):
+    cursor.execute("UPDATE account SET name = ? WHERE username = ?", (new_name, username))
+    connection.commit()
+    print("Name changed successfully")
+
 
 # edit username - NAHIN
-def edit_username():
-    pass
+def edit_username(username, new_username):
+    cursor.execute("UPDATE account SET username = ? WHERE username = ?", (new_username,username))
+    connection.commit()
+    print("Username changed successfully")
 
 # check balance - LEE
 def check_balance(username):
@@ -223,13 +233,17 @@ def main():
             if not logged_in:
                 print('You are not logged in.')
             else:
-                edit_name()
+                username = username
+                new_name = input("Enter new name: ")
+                edit_name(username, new_name)
 
         elif cmd == 'edit username':
             if not logged_in:
                 print('You are not logged in.')
             else:
-                edit_username()
+                username = username
+                new_username = input("Enter a new username: ")
+                edit_username(username, new_username)
 
         elif cmd == 'check balance':
             if not logged_in:
