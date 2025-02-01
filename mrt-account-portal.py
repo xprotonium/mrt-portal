@@ -91,11 +91,35 @@ def edit_username():
 
 # check balance - LEE
 def check_balance(username):
-    pass
+    cursor.execute('SELECT balance FROM account WHERE username = ?',(username,))
+    row = cursor.fetchone()
+
+    print("\n Checking your balance...")
+    time.sleep(1) # pause for 1 second
+
+    if row:
+        balance = row[0]
+        print(f'Your account balance is: RM{balance}')
+        if balance > 100:
+            print("You're doing great! Keep it up!")
+        elif balance > 0:
+            print("Don't worry, keep saving!")
+        else:
+            print("You might want to consider saving more!")
+    else:
+        print("Username does not exist.")
 
 # reload balance - LEE
 def reload_balance(username, amount):
-    pass
+    cursor.execute('UPDATE account SET balance = balance + ? WHERE username = ?', (amount, username))
+    connection.commit()
+    print(f'Your balance has been reloaded by RM{amount}.')
+    if amount > 50:
+        print("Wow! That's a significant top-up! You're on your way to achieving your goals!")
+    elif amount > 0:
+        print("Great! Every little bit helps. Keep it up!")
+    else:
+        print("It seems like you didn't add any funds. Consider reloading your balance soon!")
 
 # fare calculator - ALI
 def fare_calculator():
