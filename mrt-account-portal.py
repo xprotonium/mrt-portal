@@ -78,7 +78,7 @@ def logout():
     exit()
 
 # view name - NAHIN
-def view_name():
+def view_name(username):
     pass
 
 # edit name - NAHIN
@@ -123,17 +123,17 @@ def reload_balance(username, amount):
 
 # fare calculator - ALI
 def fare_calculator():
-    stations = ['Putrajaya Sentral',
-                'Cyberjaya City Centre',
-                'Cyberjaya Utara',
-                '16 Sierra',
-                'Putra Permai',
-                'Taman Equine',
+    stations = ['PUTRAJAYA SENTRAL',
+                'CYBERJAYA CITY CENTRE',
+                'CYBERJAYA UTARA',
+                '16 SIERRA',
+                'PUTRA PERMAI',
+                'TAMAN EQUINE',
                 'UPM',
-                'Serdang Jaya',
-                'Chan Sow Lin',
-                'Tun Razak Exchange (TRX)',
-                'Ampang Park',
+                'SERDANG JAYA',
+                'CHAN SOW LIN',
+                'TUN RAZAK EXCHANGE (TRX)',
+                'AMPANG PARK',
                 'KLCC']
 
     # print all the stations available
@@ -143,8 +143,8 @@ def fare_calculator():
 
     # prompt the user for the starting station and destination station
     while True:
-        starting = input('Enter starting station: ')
-        destination = input('Enter destination: ')
+        starting = input('Enter starting station: ').upper().strip()
+        destination = input('Enter destination: ').upper().strip()
 
         # check if the entered stations exist on the stations list
         if starting not in stations or destination not in stations:
@@ -166,6 +166,7 @@ def main():
     # check if the user is logged in or not, some functions are meant to be executed only if the user is logged in.
     # another reason for this check is that if the user is already logged in, do not allow the user to log in again.
     logged_in = False
+    username = None
     while True:
         cmd = input('type "help" for list of commands.\n>> ').strip().lower()
 
@@ -203,6 +204,9 @@ def main():
                 # if the login function returns true, change the logged in status to true as well
                 if login(username, password):
                     logged_in = True
+                    cursor.execute("SELECT username FROM account WHERE username = ?", (username,))
+                    result = cursor.fetchone()
+                    username = result[0]
                 else:
                     logged_in = False
 
@@ -213,7 +217,7 @@ def main():
             if not logged_in:
                 print('You are not logged in.')
             else:
-                view_name()
+                print(view_name(username))
 
         elif cmd == 'edit name':
             if not logged_in:
@@ -242,7 +246,7 @@ def main():
                 amount = int(input("Enter amount: "))
                 reload_balance(username, amount)
 
-        elif cmd == 'fare calculator':
+        elif cmd == 'fare calculator' or cmd == 'fare' or cmd == 'fare calc':
             if not logged_in:
                 print('You are not logged in.')
             else:
