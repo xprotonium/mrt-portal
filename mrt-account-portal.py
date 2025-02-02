@@ -23,6 +23,7 @@ cursor = connection.cursor()
 cursor.execute('CREATE TABLE IF NOT EXISTS account (username TEXT PRIMARY KEY, password TEXT, name TEXT, '
                'balance INTEGER)')
 
+
 # admin function
 # select all data from account table
 # and print all data in a table format
@@ -34,6 +35,7 @@ def admin():
 
     # Print the table
     print(tabulate(data, headers=columns, tablefmt='grid'))
+
 
 # register, login, logout function - ALI
 def register(username, password, name):
@@ -51,6 +53,7 @@ def register(username, password, name):
         connection.commit()
         return True
     return False
+
 
 def login(username, password):
     # find the account with the username inputted and select the password from it
@@ -74,9 +77,11 @@ def login(username, password):
         print('Username does not exist.')
     return False
 
+
 def logout():
     # exit the program
     exit()
+
 
 # view name - NAHIN
 def view_name(username):
@@ -96,13 +101,14 @@ def edit_name(username, new_name):
 
 # edit username - NAHIN
 def edit_username(username, new_username):
-    cursor.execute("UPDATE account SET username = ? WHERE username = ?", (new_username,username))
+    cursor.execute("UPDATE account SET username = ? WHERE username = ?", (new_username, username))
     connection.commit()
     print("Username changed successfully")
 
+
 # check balance - LEE
 def check_balance(username):
-    cursor.execute('SELECT balance FROM account WHERE username = ?',(username,))
+    cursor.execute('SELECT balance FROM account WHERE username = ?', (username,))
     row = cursor.fetchone()
 
     if row:
@@ -110,6 +116,7 @@ def check_balance(username):
         print(f'Your account balance is: RM{balance}')
     else:
         print("Username does not exist.")
+
 
 # reload balance - LEE
 def reload_balance(username, amount):
@@ -122,6 +129,7 @@ def reload_balance(username, amount):
         print("Great! Every little bit helps. Keep it up!")
     else:
         print("It seems like you didn't add any funds. Consider reloading your balance soon!")
+
 
 # fare calculator - ALI
 def fare_calculator():
@@ -162,6 +170,7 @@ def fare_calculator():
     fare = 2 * number_of_stations
     print(f'The fare from {starting} station -> {destination} station is RM{fare}')
 
+
 # main function - ALI, NAHIN, LEE
 def main():
     print('WELCOME TO THE MRT ACCOUNT PORTAL')
@@ -193,7 +202,6 @@ def main():
                         break
                     else:
                         print('Registration failed. Please try again.')
-
         elif cmd == 'login':
             # check if the user is already logged in or not
             if logged_in:
@@ -202,7 +210,6 @@ def main():
                 # prompt for username and password
                 username = input('Enter username: ')
                 password = input('Enter password: ')
-
                 # if the login function returns true, change the logged in status to true as well
                 if login(username, password):
                     logged_in = True
@@ -211,16 +218,13 @@ def main():
                     username = result[0]
                 else:
                     logged_in = False
-
         elif cmd == 'logout':
             logout()
-
         elif cmd == 'view name':
             if not logged_in:
                 print('You are not logged in.')
             else:
                 print(view_name(username))
-
         elif cmd == 'edit name':
             if not logged_in:
                 print('You are not logged in.')
@@ -228,7 +232,6 @@ def main():
                 username = username
                 new_name = input("Enter new name: ")
                 edit_name(username, new_name)
-
         elif cmd == 'edit username':
             if not logged_in:
                 print('You are not logged in.')
@@ -236,14 +239,13 @@ def main():
                 username = username
                 new_username = input("Enter a new username: ")
                 edit_username(username, new_username)
-
+                username = new_username
         elif cmd == 'check balance':
             if not logged_in:
                 print('You are not logged in.')
             else:
                 username = username
                 check_balance(username)
-
         elif cmd == 'reload balance':
             if not logged_in:
                 print("You are not logged in.")
@@ -261,20 +263,19 @@ def main():
                         break
                     else:
                         print("Invalid amount entered. Please try again.")
-
         elif cmd == 'fare calculator' or cmd == 'fare' or cmd == 'fare calc':
             if not logged_in:
                 print('You are not logged in.')
             else:
                 fare_calculator()
-
         elif cmd == 'admin':
             admin()
-
         elif cmd == 'help':
-            print('register\nlogin\nlogout\nview name\nedit name\nedit username\ncheck balance\nreload balance\nfare calculator')
+            print(
+                'register\nlogin\nlogout\nview name\nedit name\nedit username\ncheck balance\nreload balance\nfare calculator')
         else:
             print('Invalid command')
+
 
 # call main function
 if __name__ == '__main__':
