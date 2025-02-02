@@ -10,6 +10,7 @@
 
 import sqlite3
 import hashlib
+import time
 from tabulate import tabulate
 
 # connection
@@ -104,18 +105,9 @@ def check_balance(username):
     cursor.execute('SELECT balance FROM account WHERE username = ?',(username,))
     row = cursor.fetchone()
 
-    print("\n Checking your balance...")
-    time.sleep(1) # pause for 1 second
-
     if row:
         balance = row[0]
         print(f'Your account balance is: RM{balance}')
-        if balance > 100:
-            print("You're doing great! Keep it up!")
-        elif balance > 0:
-            print("Don't worry, keep saving!")
-        else:
-            print("You might want to consider saving more!")
     else:
         print("Username does not exist.")
 
@@ -249,16 +241,26 @@ def main():
             if not logged_in:
                 print('You are not logged in.')
             else:
-                username = input("Enter username: ")
+                username = username
                 check_balance(username)
 
         elif cmd == 'reload balance':
             if not logged_in:
                 print("You are not logged in.")
             else:
-                username = input("Enter username: ")
-                amount = int(input("Enter amount: "))
-                reload_balance(username, amount)
+                username = username
+                while True:
+                    amount = input("Enter amount\nType cancel to cancel process\n>> ").strip()
+                    # check if the input entered is digit or not
+                    # if it is, convert it to an integer
+                    if amount.isdigit():
+                        amount = int(amount)
+                        reload_balance(username, amount)
+                        break
+                    elif amount.lower() == "cancel":
+                        break
+                    else:
+                        print("Invalid amount entered. Please try again.")
 
         elif cmd == 'fare calculator' or cmd == 'fare' or cmd == 'fare calc':
             if not logged_in:
