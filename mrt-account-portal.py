@@ -10,7 +10,6 @@
 
 import sqlite3
 import hashlib
-import time
 from tabulate import tabulate
 
 # connection
